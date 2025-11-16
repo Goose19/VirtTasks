@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Forensics: Encrypted Disk Image -> Key Recovery -> Secret</title>
+    </head>
+
+    <body>
+        <h1>Forensics: Encrypted Disk Image -> Key Recovery -> Secret</h1>
+
+        <p><strong>Дано:</strong></p>
+        <ul>
+            <li>disk.img — образ диска с зашифрованным разделом (LUKS2)</li>
+            <li>memdump.raw — дамп памяти системы, работающая с этим диском</li>
+        </ul>
+
+        <h2>Задачи:</h2>
+        <ol>
+            <li>Проанализировать memdump.raw</li>
+            <li>Найти закодированный ключ и декодировать его</li>
+            <li>Открыть LUKS-раздел</li>
+            <li>Смонтировать файловую систему</li>
+            <li>Получить флаг</li>
+        </ol>
+
+        <h2>Формат флага</h2>
+        <p><code>CTF{...}</code></p>
+    </body>
+</html>

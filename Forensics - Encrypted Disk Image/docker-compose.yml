@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+    luks_forensics:
+        build:
+            context: ./docker/luks_forensics
+        container_name: luks_forensics
+        ports:
+            - "8080:8080"
+        restart: unless-stopped
+
+networks:
+    default_net:
+        driver: bridge

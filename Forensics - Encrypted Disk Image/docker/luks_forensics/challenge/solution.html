@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<head>
+<h2>Решение задачи. Местоположение директорий может отличаться. %username% - имя пользователя, указанный вами</h2>
+</head>
+<body>
+    <ul>
+        <li>mkdir solution</li>
+        <li>cd solution</li>
+        <li>cp "/mnt/c/Users/%username%/Downloads/disk.img" /home/%username%/solution</li>
+        <li>cp "/mnt/c/Users/%username%/Downloads/memdump.raw" /home/%username/solution</li>
+        <li>cat memdump.raw (проще открыть в текстовом редакторе, например: notepad++. Ключ находится в самом низу дампа)</li>
+        <li>echo 'ouPG36pW9nzvhya8BZJ7PTdMyy7IOEQwYedHosDAmqc=' | base64 -d > keyfile.bin</li>
+        <li>LOOP=$(sudo losetup -f --show "$(pwd)/disk.img")</li>
+        <li>echo "$LOOP" (выведится /dev/loopN, где N — число)</li>
+        <li>sudo cryptsetup open "$LOOP" luks_ctf --key-file keyfile.bin</li>
+        <li>sudo mkdir -p /mnt/test</li>
+        <li>sudo mount /dev/mapper/luks_ctf /mnt/test</li>
+        <li>cat /mnt/test/secret/flag.txt</li>
+        <li>CTF{FORNSICS_LUKS_KEY_RECOVER_9a1d0b}</li>
+    </ul>
+</body>
+</html>
